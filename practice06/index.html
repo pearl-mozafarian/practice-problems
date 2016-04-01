@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS practice6 Numeric Spirals</title>
+    <meta name="author" content="Pearl Mozafarian">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        #container {
+            margin: 3em auto;
+            background-color: #fff;
+            border-radius:.5em;
+            box-shadow: 7px 7px 10px;
+            width:70vw;
+            padding: 2em;
+            color: #346DA6;
+            font-family: Roboto;
+            line-height: 2em;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <p class="question">
+        <b>Question: </b>
+        Build a function that takes one parameter and prints out the Fibonacci sequence based on the input parameter.
+    </p>
+    <p class="answer">
+        <b> The answer is :</b>
+        <br><span id="answer"></span>
+    </p>
+</div>
+<script>
+    do{
+        var questionRepeat=false;
+        var length=prompt("Please enter a number");
+        length = parseInt(length);
+        if(isNaN(length)) {
+            alert("This is not a valid number");
+            questionRepeat=true;
+        }
+    }while (questionRepeat)
+    fib (length);
+    function fib (max) {
+        var fibArray=[];
+        for (var i=2; i<max; i++) {
+            fibArray[0]=0;
+            fibArray[1]=1;
+            fibArray[i]=fibArray[i-1]+fibArray[i-2];
+        }
+        fibArray=fibArray.join(", ");
+        console.log(fibArray);
+        document.getElementById("answer").innerHTML=fibArray;
+    }
+</script>
+</body>
+</html>
