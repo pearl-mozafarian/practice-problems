@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS practice5 FizzBuzz </title>
+    <meta name="author" content="Pearl Mozafarian">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        #container {
+            margin: 3em auto;
+            background-color: #fff;
+            border-radius:.5em;
+            box-shadow: 7px 7px 10px;
+            width:70vw;
+            padding: 2em;
+            color: #346DA6;
+            font-family: Roboto;
+            line-height: 2em;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <p class="question">
+        <b>Question: </b>
+        Build a function that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.
+    </p>
+    <p class="answer">
+        <b>The answer is:</b>
+        <br><span id="answer"></span>
+    </p>
+</div>
+<script>
+    var myArray=[];
+    for(var i=1;i<=100;i++) {
+        if(i%3 == 0 && i%5 ==0){
+            myArray[i-1]="fizzbuzz";
+        }else if(i%3 == 0) {
+            myArray[i-1]="fizz";
+        }else if (i%5 ==0) {
+            myArray[i-1]="buzz";
+        }else {
+            myArray[i-1]=i;
+        }
+    }
+    myArray=myArray.join(" ,  ");
+    document.getElementById("answer").innerHTML=myArray;
+</script>
+</body>
+</html>
