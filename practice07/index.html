@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS practice</title>
+    <meta name="author" content="Pearl Mozafarian">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        #container {
+            margin: 3em auto;
+            background-color: #fff;
+            border-radius:.5em;
+            box-shadow: 7px 7px 10px;
+            width:70vw;
+            padding: 2em;
+            color: #346DA6;
+            font-family: Roboto;
+            line-height: 2em;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <p class="question">
+        <b>Question: </b>
+        Build a function that will translate text into "Pig Latin" Take the first consonant and move it to the end of a word and then affix "ay" to the end of that word."
+    </p>
+    <p>My string is: myString = "Hello my name is Pearl".<p/>
+    <p class="answer">
+        <b> The answer is :</b>
+        <br><span id="answer"></span>
+    </p>
+</div>
+<script>
+
+    function word_separater (myString) {
+        var first_letter=0;
+        var words = [];
+        for(var i=0; i<myString.length; i++) {
+            if (myString.charAt(i)==" " || myString.charAt(i)=="." ) {
+                var one_word = myString.slice(first_letter,i);
+                words.push(one_word /*.toLowerCase()*/);
+                first_letter = i+1;
+            }
+        }
+        return(words);
+    }//word_separater
+
+    function start_with_vowels (word) {
+        console.log(word);
+        var vowels = ["a","e","i","o","u"];
+        for (var i=0; i<vowels.length; i++) {
+            if(word[0]==vowels[i]){
+                return(true);
+            }
+        }
+    }//start_with_vowels
+
+    function capitalize (word) {
+        if(word[0]==word[0].toUpperCase()) {
+            return(true);
+        }
+    }//capitalize
+
+    function pig_latin (separate_words) {
+        var answer = [];
+        for (var j=0;j<separate_words.length; j++) {
+            var pig=separate_words[j];
+            // rule1 is words that start with vowels.
+            var rule1= false;
+            //rule2 refers to capitalize words
+            var rule2= false;
+            rule1=start_with_vowels(pig);
+            rule2=capitalize(pig);
+            console.log("rule1: "+rule1);
+            console.log("rule2: "+rule2);
+            pig=pig.toLowerCase();
+            if(rule1){
+                var newpig = pig+"yay";
+                while(rule2){
+                    newpig=newpig[0].toUpperCase()+newpig.slice(1,newpig.length);
+                    rule2=false;
+                }
+                answer.push(newpig);
+            }else {
+                var newpig = pig.slice(1,pig.length)+pig[0]+"ay";
+                while(rule2){
+                    newpig=newpig[0].toUpperCase()+newpig.slice(1,newpig.length);
+                    rule2=false;
+                }
+                answer.push(newpig);
+            }
+        }
+        console.log(answer);
+        return(answer)
+    }//pig_latin
+    var myString = "Hello my name is Pearl.";
+    var separate_words= [];
+    separate_words=word_separater(myString);
+    console.log(separate_words);
+    var result=pig_latin (separate_words)
+    document.getElementById("answer").innerHTML=result.join(", ");
+</script>
+</body>
+</html>
