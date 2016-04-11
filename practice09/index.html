@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS practice</title>
+    <meta name="author" content="Pearl Mozafarian">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        #container {
+            margin: 3em auto;
+            background-color: #fff;
+            border-radius:.5em;
+            box-shadow: 7px 7px 10px;
+            width:70vw;
+            padding: 2em;
+            color: #346DA6;
+            font-family: Roboto;
+            line-height: 2em;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <p class="question">
+        <b>Question: </b>
+        Build a function that takes in a string and an array of strings.
+        The function should output an array of strings that contain the same letters as the single input string.
+    </p>
+    <p class="answer">
+        <b> The answer is :</b>
+        <br><span id="answer"></span>
+    </p>
+    <script>
+        var myArray = ['cat','caterpillar','whale','accurate','smile','cactus','cute'];
+        var myString = "cat";
+        var stringLength = myString.length;
+        var output=[];
+        function fittingWords(myString, myArray) {
+            for (var i=0; i<myArray.length; i++) {
+                var match = 0;
+                var word=myArray[i];
+                for (var k=0; k<myString.length; k++) {
+                    for (var j=0; j<word.length;j++) {
+                        if (word[j]==myString[k]) {
+                            match+=1;
+                            break;
+                        }//inner if
+                    }//word
+                }//myString
+                if (match==stringLength) {
+                    output.push(word);
+                }
+            }//each word in the array
+            return(output);
+        }//function
+        var answer = fittingWords(myString, myArray);
+        document.getElementById("answer").innerHTML= answer.join(", ");
+    </script>
+</div>
+</body>
+</html>
