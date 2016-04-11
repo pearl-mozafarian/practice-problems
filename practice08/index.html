@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS practice</title>
+    <meta name="author" content="Pearl Mozafarian">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        #container {
+            margin: 3em auto;
+            background-color: #fff;
+            border-radius:.5em;
+            box-shadow: 7px 7px 10px;
+            width:70vw;
+            padding: 2em;
+            color: #346DA6;
+            font-family: Roboto;
+            line-height: 2em;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <p class="question">
+        <b>Question: </b>
+        Create a function definition that achieves the output with the given input.<br>
+        input: character_convert('the cat in the hat')<br>
+        desired output: "11610410132999711632105110321161041013210497116"
+    </p>
+    <p class="answer">
+        <b> The answer is :</b>
+        <br><span id="answer"></span>
+    </p>
+</div>
+<script>
+    var sentence = "the cat in the hat";
+    var asci="";
+    for (var i=0; i<sentence.length; i++) {
+        asci+=sentence.charCodeAt(i);
+    }
+    document.getElementById("answer").innerHTML=asci;
+</script>
+</body>
+</html>
